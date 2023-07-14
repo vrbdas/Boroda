@@ -1,0 +1,62 @@
+.promo {
+    min-height: 800px;
+    background: url("../img/slide-1.webp") center center/cover no-repeat;
+    padding: 25px 0 60px 0;
+    position: relative;
+}
+.header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    gap: 7px;
+    align-items: end;
+}
+.menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    gap: 25px;
+    &__item {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 400;
+        color: #303030;
+        &:hover {
+            color: #004e8c;
+        }
+        &_active {
+            color: #004e8c;
+            font-weight: 500;
+        }
+    }
+}
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 8px;
+    span {
+        border: 2px solid #303030;
+        &:nth-child(1) {
+            width: 19px;
+        }
+        &:nth-child(2) {
+            width: 23px;
+        }
+        &:nth-child(3) {
+            width: 28px;
+        }
+    }
+}
+.contacts {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
