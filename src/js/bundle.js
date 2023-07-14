@@ -3732,28 +3732,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tiny_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiny-slider */ "./node_modules/tiny-slider/dist/tiny-slider.js");
 
 
-const slider = (0,tiny_slider__WEBPACK_IMPORTED_MODULE_0__.tns)({
-  container: '.licence__tns',
-  items: 1,
-  slideBy: 1,
-  autoplay: false,
-  nav: false,
-  loop: false,
-  prevButton: '.licence__slider-prev',
-  nextButton: '.licence__slider-next',
-  responsive: {
-    768: {
-      items: 1
-    },
-    992: {
-      items: 2
-    },
-    1200: {
-      items: 3
-    },
-  }
-});
+window.addEventListener('DOMContentLoaded', () => {
 
+  const slider1 = (0,tiny_slider__WEBPACK_IMPORTED_MODULE_0__.tns)({
+    container: '.tns',
+    items: 1,
+    slideBy: 1,
+    autoplay: false,
+    nav: false,
+    loop: false,
+    controls: true,
+    prevButton: '.promo__controls-prev',
+    nextButton: '.promo__controls-next',
+    responsive: {
+      768: {
+
+      },
+      992: {
+
+      },
+      1200: {
+
+      },
+    }
+  });
+
+
+
+
+
+});
 
 }();
 /******/ })()

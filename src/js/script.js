@@ -1,24 +1,32 @@
 import {tns} from 'tiny-slider';
 
-const slider = tns({
-  container: '.licence__tns',
-  items: 1,
-  slideBy: 1,
-  autoplay: false,
-  nav: false,
-  loop: false,
-  prevButton: '.licence__slider-prev',
-  nextButton: '.licence__slider-next',
-  responsive: {
-    768: {
-      items: 1
-    },
-    992: {
-      items: 2
-    },
-    1200: {
-      items: 3
-    },
-  }
-});
+window.addEventListener('DOMContentLoaded', () => {
 
+  const slider1 = tns({
+    container: '.tns',
+    items: 1,
+    slideBy: 1,
+    autoplay: false,
+    nav: false,
+    loop: false,
+    controls: true,
+    prevButton: '.promo__controls-prev',
+    nextButton: '.promo__controls-next',
+    responsive: {
+      768: {
+
+      },
+      992: {
+
+      },
+      1200: {
+
+      },
+    }
+  });
+
+
+
+
+
+});

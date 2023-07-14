@@ -1,0 +1,81 @@
+.mining {
+    &__grid {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        align-items: center;
+        gap: 100px;
+        padding: 25px 0 100px 0;
+    }
+    &__header {
+        display: flex;
+        align-items: flex-end;
+        gap: 50px;
+    }
+    &__hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        span {
+            width: 30px;
+            border: 2px solid #303030;
+        }
+    }
+    &__main {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    &__title {
+        color: #303030;
+        font-size: 64px;
+        font-weight: 700;
+        margin: 0;
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 60px;
+    }
+    &__subtitle {
+        color: #005490;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0;
+        cursor: pointer;
+        transition: 0.5s all;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 33px;
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            li {
+                color: #a4a4a4;
+                font-size: 14px;
+                font-weight: 400;
+                cursor: pointer;
+            }
+        }
+        &:hover {
+            .mining__subtitle {
+                border-left: 10px solid #ffdd00; 
+                padding-left: 15px;
+            }
+            ul {
+                li {
+                    color: rgb(48, 48, 48);
+                }
+            }
+        }
+    }
+    &__footer {
+        min-height: 220px;
+        background: url(../img/footer.webp) center center/cover no-repeat;
+    }
+}
