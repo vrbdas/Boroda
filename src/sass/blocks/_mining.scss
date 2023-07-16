@@ -11,15 +11,6 @@
         align-items: flex-end;
         gap: 50px;
     }
-    &__hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        span {
-            width: 30px;
-            border: 2px solid #303030;
-        }
-    }
     &__main {
         display: flex;
         flex-direction: column;
@@ -36,18 +27,17 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 60px;
     }
-    &__subtitle {
-        color: #005490;
-        font-size: 18px;
-        font-weight: 700;
-        margin: 0;
-        cursor: pointer;
-        transition: 0.5s all;
-    }
     &__item {
         display: flex;
         flex-direction: column;
         gap: 33px;
+        &-subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            cursor: pointer;
+            transition: 0.5s all;
+        }
         ul {
             padding: 0;
             margin: 0;
@@ -63,7 +53,12 @@
             }
         }
         &:hover {
-            .mining__subtitle {
+            .mining__item-subtitle {
+                color: #005490;
+            }
+        }
+        &_active {
+            .mining__item-subtitle {
                 border-left: 10px solid #ffdd00; 
                 padding-left: 15px;
             }

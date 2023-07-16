@@ -1,8 +1,8 @@
 .promo {
-    min-height: 800px;
     position: relative;
     &__slide {
         position: relative;
+        min-height: 800px;
     }
     &__bg {
         width: 100%;
@@ -18,48 +18,7 @@
         z-index: 1;
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
-    }
-    &__menu {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        list-style: none;
-        gap: 25px;
-        &-item {
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 400;
-            color: #303030;
-            &:hover {
-                color: #004e8c;
-            }
-            &_active {
-                color: #004e8c;
-                font-weight: 500;
-            }
-        }
-    }
-    &__hamburger {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 8px;
-        cursor: pointer;
-        span {
-            border: 2px solid #303030;
-            &:nth-child(1) {
-                width: 19px;
-            }
-            &:nth-child(2) {
-                width: 23px;
-            }
-            &:nth-child(3) {
-                width: 28px;
-            }
-        }
+        gap: 50px;
     }
     &__contacts {
         padding-left: 60px;
@@ -92,6 +51,12 @@
         text-transform: uppercase;
         z-index: 10;
         padding-right: 60px;
+        &_white {
+            color: #fff;
+            span {
+                color: #000;
+            }
+        }
         span {
             position: relative;
             &::before {
@@ -109,9 +74,10 @@
         }
     }
     &__controls {
+        padding-bottom: 60px;
         position: absolute;
         bottom: 0;
-        left: 50%;
+        left: 59%;
         z-index: 1;
         display: flex;
         align-items: center;
@@ -119,6 +85,14 @@
         &-counter {
             font-size: 12px;
             font-weight: 400;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            text-shadow: 
+            0.5px 0 0.5px #fff, 
+            0 0.5px 0.5px #fff, 
+            -0.5px 0 0.5px #fff, 
+            0 -0.5px 0.5px #fff;
         }
         &-prev {
             display: flex;
@@ -127,14 +101,18 @@
             border: none;
             outline: none;
             cursor: pointer;
+            font-size: 20px;
+            text-shadow: 
+            0.5px 0 0.5px #fff, 
+            0 0.5px 0.5px #fff, 
+            -0.5px 0 0.5px #fff, 
+            0 -0.5px 0.5px #fff;
+            &:disabled {
+                visibility: hidden;
+            }
         }
         &-next {
-            display: flex;
-            align-items: center;
-            background: none;
-            border: none;
-            outline: none;
-            cursor: pointer;
+            @extend .promo__controls-prev;
         }
     }
     &__btns {
