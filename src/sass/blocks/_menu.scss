@@ -25,11 +25,9 @@
         font-size: 14px;
         font-weight: 400;
         color: #303030;
-        text-shadow: 
-        0.5px 0 0.5px #fff, 
-        0 0.5px 0.5px #fff, 
-        -0.5px 0 0.5px #fff, 
-        0 -0.5px 0.5px #fff;
+        &.background--dark {
+            color: #fff;
+        }
         &:hover {
             color: #004e8c;
             font-weight: 500;
@@ -41,6 +39,11 @@
         align-items: flex-end;
         gap: 8px;
         cursor: pointer;
+        &.background--dark {
+            span {
+                border: 2px solid #fff;
+            }
+        }
         span {
             transition: 0.5s all;
             border: 2px solid #303030;

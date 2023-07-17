@@ -1,8 +1,9 @@
 .promo {
     position: relative;
+    scroll-snap-align: start;
     &__slide {
         position: relative;
-        min-height: 800px;
+        height: 100vh;
     }
     &__bg {
         width: 100%;
@@ -88,11 +89,9 @@
             height: 50px;
             display: flex;
             align-items: center;
-            text-shadow: 
-            0.5px 0 0.5px #fff, 
-            0 0.5px 0.5px #fff, 
-            -0.5px 0 0.5px #fff, 
-            0 -0.5px 0.5px #fff;
+            &.background--dark {
+                color: #fff;
+            }
         }
         &-prev {
             display: flex;
@@ -102,11 +101,9 @@
             outline: none;
             cursor: pointer;
             font-size: 20px;
-            text-shadow: 
-            0.5px 0 0.5px #fff, 
-            0 0.5px 0.5px #fff, 
-            -0.5px 0 0.5px #fff, 
-            0 -0.5px 0.5px #fff;
+            &.background--dark {
+                color: #fff;
+            }
             &:disabled {
                 visibility: hidden;
             }
@@ -145,7 +142,8 @@
             font-weight: 500;
             color: #fff;
             text-decoration: none;
-            &_active {
+            transition: 0.5s all;
+            &:hover {
                 color: #ffdd00;
             }
         }

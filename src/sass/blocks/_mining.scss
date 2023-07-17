@@ -1,4 +1,8 @@
 .mining {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &__grid {
         display: grid;
         grid-template-rows: auto 1fr;
@@ -70,7 +74,7 @@
         }
     }
     &__footer {
-        min-height: 220px;
+        height: 220px;
         background: url(../img/footer.webp) center center/cover no-repeat;
     }
 }

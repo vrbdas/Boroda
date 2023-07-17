@@ -7,6 +7,15 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Geometria', sans-serif;
+    scroll-behavior: smooth;
+}
+.scroller {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+section {
+    scroll-snap-align: start;
 }
 .container {
 	width: 1320px;
@@ -33,5 +42,7 @@
 @import "blocks/promo";
 @import "blocks/menu";
 @import "blocks/mining";
+
+@import 'base/media';
 
 

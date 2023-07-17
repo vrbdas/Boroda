@@ -3,16 +3,22 @@ import menu from './modules/menu';
 
 window.addEventListener('DOMContentLoaded', () => {
 
+  // tiny slider
+
   const slider = tns({
     container: '.tns',
     items: 1,
     slideBy: 1,
-    autoplay: false,
     nav: true,
     loop: true,
     controls: true,
     prevButton: '.promo__controls-prev',
     nextButton: '.promo__controls-next',
+    autoplay: true,
+    autoplayTimeout: 9000,
+    autoplayHoverPause: false,
+    autoplayButton: false,
+    autoplayButtonOutput: false,
     responsive: {
       768: {
 
@@ -26,7 +32,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  menu(); // меню навигации
+  // меню навигации
+
+  menu();
 
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 
@@ -44,6 +52,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  slider.events.on('transitionEnd', () => { // подписывается на событие окончания перелистывания слайда (см. документацию к tns)
+    BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
+  });
+
   // вкладки в секции mining
 
   const miningItems = document.querySelectorAll('.mining__item');
@@ -58,5 +70,12 @@ window.addEventListener('DOMContentLoaded', () => {
       item.classList.add('mining__item_active');
     });
   });
+
+  // BackgroundCheck
+
+  BackgroundCheck.init({
+    targets: '.promo__controls-counter, .promo__controls-prev, .promo__controls-next, .menu__item, .menu__hamburger'
+  });
+  BackgroundCheck.set('threshold', 80);
 
 });
