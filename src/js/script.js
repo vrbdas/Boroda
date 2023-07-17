@@ -34,7 +34,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // меню навигации
 
-  menu();
+  menu('.promo__menu-hamburger', '.promo__menu-items');
+  menu('.mining__menu-hamburger', '.mining__menu-items');
 
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 

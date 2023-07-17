@@ -1,3 +1,16 @@
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1140px;
+    }
+    .promo {
+        &__controls {
+            left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 30px;
+        }
+    }
+}
+
 @media (max-width: 1200px) {
     .scroller {
         overflow-y: unset;
@@ -6,12 +19,36 @@
     .container {
         max-width: 960px;
     }
+    .logo {
+        display: none;
+    }
     .menu {
-        align-items: unset;
-        &__items {
-            flex-direction: column;
-            align-items: end;
+        padding: 35px 60px 0 60px;
+        align-items: flex-start;
+    }
+    .promo {
+        height: unset;
+        &__contacts {
+            display: none;
         }
+        &__title {
+            left: unset;
+            right: 0px; 
+            text-align: right;
+        }
+        &__breadcrumbs {
+            flex-direction: column;
+            align-items: flex-start;
+            &-divider {
+                display: none;
+                &_vertical {
+                    display: block;
+                }
+            }
+        }
+    }
+    .mining {
+        height: unset;
     }
 }
 
@@ -19,6 +56,61 @@
     .container {
         max-width: 720px;
     }
+    .promo {
+        &__title {
+            font-size: 28px;
+            line-height: 48px;
+            left: 0;
+            top: 10%;
+            transform: none;
+            text-align: left;
+            padding: 0 0 0 28px;
+            max-width: 50%;
+        }
+        &__breadcrumbs {
+            padding: 0 0 0 28px;
+            top: 40%;
+            left: 0;
+        }
+        &__btn-goto {
+            display: none;
+        }
+        &__btns {
+            padding: 0;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            &_hide {
+                display: flex;
+            }
+        }
+        &__controls {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20%;
+        }
+    }
+    .menu {
+        width: fit-content;
+        align-items: unset;
+        &__items {
+            flex-direction: column;
+            align-items: end;
+        }
+    }
+    .mining {
+        &__title {
+            font-size: 28px;
+            line-height: 48px;
+        }
+        &__menu-hamburger {
+            display: none;
+        }
+        &__grid {
+            gap: 50px;
+        }
+    }
+
 }
 
 @media (max-width: 768px) {

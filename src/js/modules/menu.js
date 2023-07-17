@@ -1,6 +1,6 @@
-function menu() {
-  const menuHamburger = document.querySelector('.menu__hamburger');
-  const menuItems = document.querySelector('.menu__items');
+function menu(menuHamburgerSelector, menuItemsSelector) {
+  const menuHamburger = document.querySelector(menuHamburgerSelector);
+  const menuItems = document.querySelector(menuItemsSelector);
 
   menuHamburger.addEventListener('click', () => {
     menuItems.classList.toggle('menu__items_active');

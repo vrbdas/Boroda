@@ -3690,9 +3690,9 @@ exports.tns = tns;
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-function menu() {
-  const menuHamburger = document.querySelector('.menu__hamburger');
-  const menuItems = document.querySelector('.menu__items');
+function menu(menuHamburgerSelector, menuItemsSelector) {
+  const menuHamburger = document.querySelector(menuHamburgerSelector);
+  const menuItems = document.querySelector(menuItemsSelector);
 
   menuHamburger.addEventListener('click', () => {
     menuItems.classList.toggle('menu__items_active');
@@ -3792,7 +3792,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // меню навигации
 
-  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__["default"])('.promo__menu-hamburger', '.promo__menu-items');
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__["default"])('.mining__menu-hamburger', '.mining__menu-items');
 
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 

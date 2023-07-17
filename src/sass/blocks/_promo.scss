@@ -19,7 +19,7 @@
         z-index: 1;
         display: flex;
         align-items: flex-end;
-        gap: 50px;
+        gap: 40px;
     }
     &__contacts {
         padding-left: 60px;
@@ -117,6 +117,12 @@
         bottom: 0;
         right: 0;
         padding: 0 60px 60px 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        &_hide {
+            display: none;
+        }
     }
     &__btn-price {
         width: 261px;
@@ -150,6 +156,20 @@
         &-divider {
             width: 48px;
             position: relative;
+            &_vertical {
+                display: none;
+                position: relative;
+                padding-left: 20px;
+                &::before {
+                    content: '';
+                    border: 1px solid #ffffff;
+                    position: absolute;
+                    height: 22px;
+                    top: 0;
+                    left: 60px;
+                    transform: translateY(-50%);
+                }
+            }
             &::before {
                 content: '';
                 border: 1px solid #ffffff;

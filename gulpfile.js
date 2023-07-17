@@ -56,7 +56,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src("src/js/*.js")
+    return gulp.src("src/js/**/*")
         .pipe(gulp.dest(`C:/Code/domains/${destFolder}/js`))
 });
 
