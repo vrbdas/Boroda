@@ -1,12 +1,22 @@
 import {tns} from 'tiny-slider';
 import {menu} from './modules/menu';
 import {menuMobile} from './modules/menu';
-
+import mining from './modules/mining';
 import 'script-loader!./background-check.min.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
+  BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck при перезагрузке страницы (см. документацию к BackgroundCheck)
+
+  // вкладки в секции mining
+
+  mining();
+
+  // меню навигации
+
+  menu('.promo__menu-hamburger', '.promo__menu-items');
+  menu('.mining__menu-hamburger', '.mining__menu-items');
+  menuMobile('.mobile__hamburger', '.menu-mobile', '.menu-mobile__close', '.menu-mobile__item');
 
   // tiny slider
 
@@ -26,12 +36,6 @@ window.addEventListener('DOMContentLoaded', () => {
     autoplayButtonOutput: false,
   });
 
-  // меню навигации
-
-  menu('.promo__menu-hamburger', '.promo__menu-items');
-  menu('.mining__menu-hamburger', '.mining__menu-items');
-  menuMobile('.mobile__hamburger', '.menu-mobile', '.menu-mobile__close', '.menu-mobile__item');
-
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 
   let slideCurrent = 1; // номер текущего слайда, в начале равен 1
@@ -50,21 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   slider.events.on('transitionEnd', () => { // подписывается на событие окончания перелистывания слайда (см. документацию к tns)
     BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
-  });
-
-  // вкладки в секции mining
-
-  const miningItems = document.querySelectorAll('.mining__item');
-  function miningItemsRemoveActiveClasses() {
-    miningItems.forEach((item) => {
-      item.classList.remove('mining__item_active');
-    });
-  }
-  miningItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      miningItemsRemoveActiveClasses();
-      item.classList.add('mining__item_active');
-    });
   });
 
   // BackgroundCheck

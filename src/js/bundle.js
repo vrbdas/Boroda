@@ -3812,6 +3812,53 @@ function menuMobile(menuTriggerSelector, menuBlockSelector, menuCloseSelector, m
 
 
 
+/***/ }),
+
+/***/ "./src/js/modules/mining.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/mining.js ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function mining() {
+
+  const miningItems = document.querySelectorAll('.mining__item');
+
+  // меняет классы по кругу с интервалом 6с
+
+  let i = 0;
+  const timerId = setInterval(function() {
+    if (i == miningItems.length) {
+      i = 0;
+    } else {
+      miningItemsRemoveActive();
+      miningItems[i].classList.add('mining__item_active');
+      i++;
+    }
+  }, 6000);
+
+  // меняет классы по клику
+
+  miningItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      miningItemsRemoveActive();
+      item.classList.add('mining__item_active');
+      clearInterval(timerId); // после клика автопереключение останавливается
+    });
+  });
+
+  function miningItemsRemoveActive() {
+    miningItems.forEach((item) => {
+      item.classList.remove('mining__item_active');
+    });
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (mining);
+
 /***/ })
 
 /******/ 	});
@@ -3892,8 +3939,9 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tiny_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiny-slider */ "./node_modules/tiny-slider/dist/tiny-slider.js");
 /* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ "./src/js/modules/menu.js");
-/* harmony import */ var script_loader_background_check_min_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! script-loader!./background-check.min.js */ "./node_modules/script-loader/index.js!./src/js/background-check.min.js");
-/* harmony import */ var script_loader_background_check_min_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(script_loader_background_check_min_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _modules_mining__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/mining */ "./src/js/modules/mining.js");
+/* harmony import */ var script_loader_background_check_min_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! script-loader!./background-check.min.js */ "./node_modules/script-loader/index.js!./src/js/background-check.min.js");
+/* harmony import */ var script_loader_background_check_min_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(script_loader_background_check_min_js__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -3902,7 +3950,17 @@ __webpack_require__.r(__webpack_exports__);
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
+  BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck при перезагрузке страницы (см. документацию к BackgroundCheck)
+
+  // вкладки в секции mining
+
+  (0,_modules_mining__WEBPACK_IMPORTED_MODULE_2__["default"])();
+
+  // меню навигации
+
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menu)('.promo__menu-hamburger', '.promo__menu-items');
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menu)('.mining__menu-hamburger', '.mining__menu-items');
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menuMobile)('.mobile__hamburger', '.menu-mobile', '.menu-mobile__close', '.menu-mobile__item');
 
   // tiny slider
 
@@ -3922,12 +3980,6 @@ window.addEventListener('DOMContentLoaded', () => {
     autoplayButtonOutput: false,
   });
 
-  // меню навигации
-
-  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menu)('.promo__menu-hamburger', '.promo__menu-items');
-  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menu)('.mining__menu-hamburger', '.mining__menu-items');
-  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menuMobile)('.mobile__hamburger', '.menu-mobile', '.menu-mobile__close', '.menu-mobile__item');
-
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 
   let slideCurrent = 1; // номер текущего слайда, в начале равен 1
@@ -3946,21 +3998,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   slider.events.on('transitionEnd', () => { // подписывается на событие окончания перелистывания слайда (см. документацию к tns)
     BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
-  });
-
-  // вкладки в секции mining
-
-  const miningItems = document.querySelectorAll('.mining__item');
-  function miningItemsRemoveActiveClasses() {
-    miningItems.forEach((item) => {
-      item.classList.remove('mining__item_active');
-    });
-  }
-  miningItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      miningItemsRemoveActiveClasses();
-      item.classList.add('mining__item_active');
-    });
   });
 
   // BackgroundCheck
