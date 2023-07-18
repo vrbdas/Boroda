@@ -119,6 +119,9 @@
             &.background--dark {
                 color: #fff;
             }
+            &.background--light {
+                color: #000;
+            }
         }
         &-prev {
             display: flex;
@@ -130,6 +133,9 @@
             font-size: 20px;
             &.background--dark {
                 color: #fff;
+            }
+            &.background--light {
+                color: #000;
             }
             &:disabled {
                 visibility: hidden;

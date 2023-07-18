@@ -83,7 +83,7 @@
         }
         &__breadcrumbs {
             padding: 0 0 0 28px;
-            top: 409px;
+            top: 350px;
             left: 0;
             gap: 0;
             &-link {
@@ -112,7 +112,14 @@
             padding: 0;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 120px;
+            bottom: 100px;
+            color: #fff;
+            &-prev {
+                color: #fff;
+            }
+            &-next {
+                color: #fff;
+            }
         }
     }
     .menu {
