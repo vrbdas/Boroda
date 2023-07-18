@@ -9,6 +9,20 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        &_mobile {
+            @extend .promo__bg; 
+            display: none;
+        }
+    }
+    &__logo {
+        display: flex;
+        gap: 7px;
+        align-items: end;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 25px 0 0 60px;
+        z-index: 1;
     }
     &__header {
         padding: 25px 60px;
@@ -52,13 +66,26 @@
         text-transform: uppercase;
         z-index: 10;
         padding-right: 60px;
+        &.background--dark {
+            color: #fff;
+        }
+        &.background--light{
+            color: #000;
+        }
         &_white {
             color: #fff;
+            &.background--dark {
+                color: #fff;
+            }
+            &.background--light{
+                color: #000;
+            }
             span {
                 color: #000;
             }
         }
         span {
+            color: #000;
             position: relative;
             &::before {
                 content: '';
@@ -140,6 +167,7 @@
         left: 0;
         display: flex;
         gap: 10px;
+        height: fit-content;
         &-link {
             display: flex;
             align-items: center;
@@ -152,24 +180,22 @@
             &:hover {
                 color: #ffdd00;
             }
+            &.background--dark {
+                color: #fff;
+                &:hover {
+                    color: #ffdd00;
+                }
+            }
+            &.background--light{
+                color: #000;
+                &:hover {
+                    color: #ffdd00;
+                }
+            }
         }
         &-divider {
             width: 48px;
             position: relative;
-            &_vertical {
-                display: none;
-                position: relative;
-                padding-left: 20px;
-                &::before {
-                    content: '';
-                    border: 1px solid #ffffff;
-                    position: absolute;
-                    height: 22px;
-                    top: 0;
-                    left: 60px;
-                    transform: translateY(-50%);
-                }
-            }
             &::before {
                 content: '';
                 border: 1px solid #ffffff;
@@ -179,5 +205,19 @@
                 left: 0;
             }
         }
+    }
+}
+
+.divider-mobile {
+    width: 30px;
+    height: 22px;
+    border-left: 1.5px solid #ffffff;
+    display: none;
+    margin-left: 60px;
+    &.background--dark {
+        border-color: #fff;
+    }
+    &.background--light{
+        border-color: #000;
     }
 }

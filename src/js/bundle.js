@@ -3690,21 +3690,69 @@ exports.tns = tns;
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-function menu(menuHamburgerSelector, menuItemsSelector) {
-  const menuHamburger = document.querySelector(menuHamburgerSelector);
-  const menuItems = document.querySelector(menuItemsSelector);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "menu": function() { return /* binding */ menu; },
+/* harmony export */   "menuMobile": function() { return /* binding */ menuMobile; }
+/* harmony export */ });
+function menu(menuTriggerSelector, menuBlockSelector) {
+  const menuTrigger = document.querySelector(menuTriggerSelector);
+  const menuBlock = document.querySelector(menuBlockSelector);
 
-  menuHamburger.addEventListener('click', () => {
-    menuItems.classList.toggle('menu__items_active');
-    menuHamburger.classList.toggle('menu__hamburger_active');
+  menuTrigger.addEventListener('click', () => {
+    menuBlock.classList.toggle('active');
+    menuTrigger.classList.toggle('active');
   });
 
-  menuItems.addEventListener('transitionend', () => {
+  menuBlock.addEventListener('transitionend', () => {
     BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
   });
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (menu);
+function menuMobile(menuTriggerSelector, menuBlockSelector, menuCloseSelector, menuLinksSelector) {
+  const menuTrigger = document.querySelectorAll(menuTriggerSelector);
+  const menuBlock = document.querySelector(menuBlockSelector);
+  const menuClose = document.querySelector(menuCloseSelector);
+  const menuLinks = document.querySelectorAll(menuLinksSelector);
+
+  menuTrigger.forEach((item) => {
+    item.addEventListener('click', () => {
+      menuBlock.classList.add('active');
+      item.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Предотвращает прокрутку страницы
+    });
+  });
+
+  // menuTrigger.addEventListener('click', () => {
+  //   menuBlock.classList.add('active');
+  //   menuTrigger.classList.add('active');
+  //   document.body.style.overflow = 'hidden'; // Предотвращает прокрутку страницы
+  // });
+
+  menuClose.addEventListener('click', () => {
+    menuHide();
+  });
+
+  menuLinks.forEach((item) => {
+    item.addEventListener('click', () => {
+      menuHide();
+    });
+  });
+
+  menuBlock.addEventListener('transitionend', () => {
+    BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
+  });
+
+  function menuHide() {
+    menuBlock.classList.remove('active');
+    menuTrigger.forEach((item) => {
+      item.classList.remove('active');
+    });
+    document.body.style.overflow = ''; // Возвращает прокрутку страницы
+  }
+}
+
+
+
 
 /***/ })
 
@@ -3735,6 +3783,23 @@ function menu(menuHamburgerSelector, menuItemsSelector) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	!function() {
 /******/ 		// define __esModule on exports
@@ -3759,7 +3824,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 window.addEventListener('DOMContentLoaded', () => {
+
+  BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
 
   // tiny slider
 
@@ -3777,23 +3845,13 @@ window.addEventListener('DOMContentLoaded', () => {
     autoplayHoverPause: false,
     autoplayButton: false,
     autoplayButtonOutput: false,
-    responsive: {
-      768: {
-
-      },
-      992: {
-
-      },
-      1200: {
-
-      },
-    }
   });
 
   // меню навигации
 
-  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__["default"])('.promo__menu-hamburger', '.promo__menu-items');
-  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__["default"])('.mining__menu-hamburger', '.mining__menu-items');
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menu)('.promo__menu-hamburger', '.promo__menu-items');
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menu)('.mining__menu-hamburger', '.mining__menu-items');
+  (0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__.menuMobile)('.mobile__hamburger', '.menu-mobile', '.menu-mobile__close', '.menu-mobile__item');
 
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 
@@ -3833,7 +3891,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // BackgroundCheck
 
   BackgroundCheck.init({
-    targets: '.promo__controls-counter, .promo__controls-prev, .promo__controls-next, .menu__item, .menu__hamburger'
+    targets: '.promo__controls-counter, .promo__controls-prev, .promo__controls-next, .menu__item, .menu__hamburger, .mobile__hamburger, .promo__breadcrumbs-link, .divider-mobile, .promo__title'
   });
   BackgroundCheck.set('threshold', 80);
 

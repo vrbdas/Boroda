@@ -1,15 +1,59 @@
-function menu(menuHamburgerSelector, menuItemsSelector) {
-  const menuHamburger = document.querySelector(menuHamburgerSelector);
-  const menuItems = document.querySelector(menuItemsSelector);
+function menu(menuTriggerSelector, menuBlockSelector) {
+  const menuTrigger = document.querySelector(menuTriggerSelector);
+  const menuBlock = document.querySelector(menuBlockSelector);
 
-  menuHamburger.addEventListener('click', () => {
-    menuItems.classList.toggle('menu__items_active');
-    menuHamburger.classList.toggle('menu__hamburger_active');
+  menuTrigger.addEventListener('click', () => {
+    menuBlock.classList.toggle('active');
+    menuTrigger.classList.toggle('active');
   });
 
-  menuItems.addEventListener('transitionend', () => {
+  menuBlock.addEventListener('transitionend', () => {
     BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
   });
 }
 
-export default menu;
+function menuMobile(menuTriggerSelector, menuBlockSelector, menuCloseSelector, menuLinksSelector) {
+  const menuTrigger = document.querySelectorAll(menuTriggerSelector);
+  const menuBlock = document.querySelector(menuBlockSelector);
+  const menuClose = document.querySelector(menuCloseSelector);
+  const menuLinks = document.querySelectorAll(menuLinksSelector);
+
+  menuTrigger.forEach((item) => {
+    item.addEventListener('click', () => {
+      menuBlock.classList.add('active');
+      item.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Предотвращает прокрутку страницы
+    });
+  });
+
+  // menuTrigger.addEventListener('click', () => {
+  //   menuBlock.classList.add('active');
+  //   menuTrigger.classList.add('active');
+  //   document.body.style.overflow = 'hidden'; // Предотвращает прокрутку страницы
+  // });
+
+  menuClose.addEventListener('click', () => {
+    menuHide();
+  });
+
+  menuLinks.forEach((item) => {
+    item.addEventListener('click', () => {
+      menuHide();
+    });
+  });
+
+  menuBlock.addEventListener('transitionend', () => {
+    BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
+  });
+
+  function menuHide() {
+    menuBlock.classList.remove('active');
+    menuTrigger.forEach((item) => {
+      item.classList.remove('active');
+    });
+    document.body.style.overflow = ''; // Возвращает прокрутку страницы
+  }
+}
+
+export {menu};
+export {menuMobile};

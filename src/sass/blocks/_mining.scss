@@ -18,6 +18,11 @@
         align-items: flex-end;
         gap: 40px;
     }
+    &__logo {
+        display: flex;
+        gap: 7px;
+        align-items: end;
+    }
     &__main {
         display: flex;
         flex-direction: column;

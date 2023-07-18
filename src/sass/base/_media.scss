@@ -19,15 +19,15 @@
     .container {
         max-width: 960px;
     }
-    .logo {
-        display: none;
-    }
     .menu {
         padding: 35px 60px 0 60px;
         align-items: flex-start;
     }
     .promo {
         height: unset;
+        &__logo {
+            display: none;
+        }
         &__contacts {
             display: none;
         }
@@ -41,14 +41,20 @@
             align-items: flex-start;
             &-divider {
                 display: none;
-                &_vertical {
-                    display: block;
-                }
             }
         }
     }
+    .divider-mobile {
+        display: block;
+    }
     .mining {
         height: unset;
+        &__logo {
+            padding: 0;
+        }
+        &__menu {
+            display: none;
+        }
     }
 }
 
@@ -57,27 +63,45 @@
         max-width: 720px;
     }
     .promo {
+        &__menu {
+            display: none;
+        }
         &__title {
             font-size: 28px;
-            line-height: 48px;
+            line-height: 36px;
             left: 0;
-            top: 10%;
+            top: 170px;
             transform: none;
             text-align: left;
-            padding: 0 0 0 28px;
-            max-width: 50%;
+            padding: 0 28px;
+            max-width: 350px;
+            &_white {
+                text-align: right;
+                left: unset;
+                right: 0;
+            }
         }
         &__breadcrumbs {
             padding: 0 0 0 28px;
-            top: 40%;
+            top: 409px;
             left: 0;
+            gap: 0;
+            &-link {
+                color: #000;
+                &.background--dark {
+                    color: #fff;
+                }
+                &.background--light{
+                    color: #000;
+                }
+            }
         }
         &__btn-goto {
             display: none;
         }
         &__btns {
             padding: 0;
-            bottom: 10%;
+            bottom: 48px;
             left: 50%;
             transform: translateX(-50%);
             &_hide {
@@ -85,32 +109,29 @@
             }
         }
         &__controls {
+            padding: 0;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 20%;
+            bottom: 120px;
         }
     }
     .menu {
-        width: fit-content;
-        align-items: unset;
-        &__items {
-            flex-direction: column;
-            align-items: end;
+        &-mobile {
+            display: block;
         }
+    }
+    .mobile__hamburger {
+        display: flex;
     }
     .mining {
         &__title {
             font-size: 28px;
-            line-height: 48px;
-        }
-        &__menu-hamburger {
-            display: none;
+            line-height: 36px;
         }
         &__grid {
             gap: 50px;
         }
     }
-
 }
 
 @media (max-width: 768px) {
@@ -122,6 +143,29 @@
 @media (max-width: 576px) {
     .container {
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0 30px;
+    }
+    .promo {
+        &__bg {
+            display: none;
+            &_mobile {
+                display: block;
+            }
+        }
+    }
+    .divider-mobile {
+        border-color: #000;
+    }
+    .mining {
+        &__logo {
+            svg:nth-child(1) {
+                width: 28px;
+                height: 28px;
+            }
+            svg:nth-child(2) {
+                width: 180px;
+                height: 20px;
+            }
+        }
     }
 }

@@ -1,7 +1,10 @@
 import {tns} from 'tiny-slider';
-import menu from './modules/menu';
+import {menu} from './modules/menu';
+import {menuMobile} from './modules/menu';
 
 window.addEventListener('DOMContentLoaded', () => {
+
+  BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
 
   // tiny slider
 
@@ -19,23 +22,13 @@ window.addEventListener('DOMContentLoaded', () => {
     autoplayHoverPause: false,
     autoplayButton: false,
     autoplayButtonOutput: false,
-    responsive: {
-      768: {
-
-      },
-      992: {
-
-      },
-      1200: {
-
-      },
-    }
   });
 
   // меню навигации
 
   menu('.promo__menu-hamburger', '.promo__menu-items');
   menu('.mining__menu-hamburger', '.mining__menu-items');
+  menuMobile('.mobile__hamburger', '.menu-mobile', '.menu-mobile__close', '.menu-mobile__item');
 
   // костыль для tns-слайдера, в котором нет функции счетчика слайдов. воспользовался навигационными точками(dots), включил их в настройках слайдера и скрыл с помощью css (.tns-nav) display: none;
 
@@ -75,7 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // BackgroundCheck
 
   BackgroundCheck.init({
-    targets: '.promo__controls-counter, .promo__controls-prev, .promo__controls-next, .menu__item, .menu__hamburger'
+    targets: '.promo__controls-counter, .promo__controls-prev, .promo__controls-next, .menu__item, .menu__hamburger, .mobile__hamburger, .promo__breadcrumbs-link, .divider-mobile, .promo__title'
   });
   BackgroundCheck.set('threshold', 80);
 
