@@ -56,7 +56,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src("src/js/**/*")
+    return gulp.src("src/js/bundle.+(*)")
         .pipe(gulp.dest(`C:/Code/domains/${destFolder}/js`))
 });
 

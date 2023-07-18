@@ -2,6 +2,8 @@ import {tns} from 'tiny-slider';
 import {menu} from './modules/menu';
 import {menuMobile} from './modules/menu';
 
+import 'script-loader!./background-check.min.js';
+
 window.addEventListener('DOMContentLoaded', () => {
 
   BackgroundCheck.refresh(); // обновляет скрипт BackgroundCheck (см. документацию к BackgroundCheck)
